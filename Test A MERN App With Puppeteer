@@ -3,19 +3,10 @@ const puppeteer = require('puppeteer');
 (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto('http://localhost:3000'); // Replace with your actual localhost URL
-
-    // Wait for the page to load
+    await page.goto('http://localhost:3000'); 
     await page.waitForSelector('#createUserButton');
-
-    // Click the "Create User" button
     await page.click('#createUserButton');
-
-    // Wait for some time for the user to be created (adjust as needed)
     await page.waitForTimeout(2000);
-
-    // Take a screenshot of the browser with the newly created user
     await page.screenshot({ path: 'user_creation.png' });
-
     await browser.close();
 })();
